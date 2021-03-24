@@ -1,5 +1,5 @@
 {
-  "name": "@treestone/boilerplace-node-package",
+  "name": "@treestone/boilerplate-node-package",
   "description": "A boilerplate for a TS based module",
   "version": "0.0.1",
   "main": "dist/index.js",
