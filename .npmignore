@@ -126,3 +126,7 @@ bitbucket-pipelines.yml
 tsconfig.json
 babel.config.js
 jest.config.js
+.editorconfig
+.eslintignore
+.eslintrc.json
+.prettierrc
