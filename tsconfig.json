@@ -13,7 +13,6 @@
         "strictNullChecks": true,
         "resolveJsonModule": true,
         "typeRoots": [
-            "./types/**/*",
             "./src/types/**/*",
             "./node_modules/@types"
         ],
@@ -22,5 +21,6 @@
         "strict": true,
         "declaration": true
     },
-    "include": ["./src/**/*"]
+    "include": ["./src/**/*"],
+    "exclude": ["./dist/**/*"]
 }

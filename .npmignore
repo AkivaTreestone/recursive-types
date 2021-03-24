@@ -117,6 +117,7 @@ dist
 
 # utils
 .idea/
+.ci/
 
 # source code - since its not needed
 src/
