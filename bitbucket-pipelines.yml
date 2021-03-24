@@ -57,6 +57,10 @@ deploy: &deploy
       - pipe: atlassian/npm-publish:0.3.1
         variables:
           NPM_TOKEN: $TREESTONE_NPM_TOKEN
+      - mkdir -p .ci/output && mv "$(npm pack | tail -n 1)" "./.ci/output/treestone-${BITBUCKET_REPO_SLUG}-1.0.${BITBUCKET_BUILD_NUMBER}.tgz"
+    # upload package as artifact so it can be inspected without npm install
+    artifacts:
+      - .cl/output/*.tgz
 
 pipelines:
   default:
