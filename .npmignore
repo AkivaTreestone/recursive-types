@@ -118,8 +118,12 @@ dist
 # utils
 .idea/
 .ci/
+__tests__
+__mocks__
 
 # source code - since its not needed
 src/
 bitbucket-pipelines.yml
 tsconfig.json
+babel.config.js
+jest.config.js
