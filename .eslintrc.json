@@ -1,0 +1,72 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "plugin:prettier/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript"
+    ],
+    "plugins": [
+        "@typescript-eslint/eslint-plugin",
+        "prettier",
+        "import",
+        "jsdoc"
+    ],
+    "env": {
+        "browser": true,
+        "jest": true,
+        "es6": true,
+        "serviceworker": true,
+        "node": true
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "import/no-unresolved": [2, {"commonjs": true, "amd": true}],
+        "import/named": 1,
+        "import/no-duplicates": "error",
+        "import/namespace": 2,
+        "import/default": 2,
+        "import/export": "error",
+        "import/order": ["error", {
+            "groups": [
+                "builtin",
+                "external",
+                "internal",
+                "parent",
+                "sibling",
+                "index"
+            ],
+            "newlines-between": "always"
+        }],
+        "import/no-anonymous-default-export": ["error", {
+            "allowArray": false,
+            "allowArrowFunction": false,
+            "allowAnonymousClass": false,
+            "allowAnonymousFunction": false,
+            "allowCallExpression": true, // The true value here is for backward compatibility
+            "allowLiteral": false,
+            "allowObject": false
+        }],
+        "import/no-default-export": "error",
+        "jsdoc/require-jsdoc": ["error", {
+            "require": {
+                "ArrowFunctionExpression": true,
+                "ClassDeclaration": true,
+                "ClassExpression": true,
+                "FunctionDeclaration": true,
+                "FunctionExpression": true,
+                "MethodDefinition": true
+            }
+        }],
+        "@typescript-eslint/ban-ts-comment": ["error", {
+            "ts-expect-error": "allow-with-description",
+            "ts-ignore": true,
+            "ts-nocheck": true,
+            "ts-check": false,
+            "minimumDescriptionLength": 3
+        }]
+    }
+}
