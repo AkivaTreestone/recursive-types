@@ -1,41 +1,45 @@
 image: node:14.16.0
 
+test: &test
+  step:
+    name: Build and Test
+    script:
+      - yarn install -D --network-concurrency 1
+      - yarn test
+
+#lint: &lint
+#  step:
+#    name: Lint package
+#    script:
+#      - yarn add eslint
+#      - npx eslint .
+#    caches:
+#      - node
+
+securityScan: &securityScan
+  step:
+    name: Security Scan
+    script:
+      - pipe: atlassian/git-secrets-scan:0.4.3
+
+deploy: &deploy
+  step:
+    name: Deploy to Production
+    deployment: Production
+    script:
+      - npm --no-git-tag-version version "1.0.$BITBUCKET_BUILD_NUMBER" -m "Upgrade to new version"
+      - pipe: atlassian/npm-publish:0.3.1
+        variables:
+          NPM_TOKEN: $TREESTONE_NPM_TOKEN
+
 pipelines:
   default:
     - parallel:
-        - step:
-            name: Build and Test
-            caches:
-              - node
-            script:
-              - yarn install
-              - yarn test
-#        - step:
-#            name: Lint the node package
-#            script:
-#              - yarn add eslint
-#              - npx eslint .
-#            caches:
-#              - node
+        - <<: *test
+
   branches:
     master:
       - parallel:
-          - step:
-              name: Build and Test
-              caches:
-                - node
-              script:
-                - yarn install
-                - yarn test
-          - step:
-              name: Security Scan
-              script:
-                - pipe: atlassian/git-secrets-scan:0.4.3
-      - step:
-          name: Deploy to Production
-          deployment: Production
-          script:
-            - npm --no-git-tag-version version "1.0.$BITBUCKET_BUILD_NUMBER" -m "Upgrade to new version"
-            - pipe: atlassian/npm-publish:0.3.1
-              variables:
-                NPM_TOKEN: $TREESTONE_NPM_TOKEN
+          - <<: *test
+          - <<: *securityScan
+      - <<: *deploy
