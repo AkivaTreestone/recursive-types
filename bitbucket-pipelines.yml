@@ -15,6 +15,7 @@ test: &test
   step:
     name: Unit Test
     script:
+      - yarn install -D --network-concurrency 1
       - ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
       - JEST_JUNIT_OUTPUT_DIR="$(pwd)/test-results" yarn test --ci --reporters=default --reporters=jest-junit
     caches:
@@ -25,20 +26,21 @@ coverage: &coverage
   step:
     name: Unit Test Coverage
     script:
+      - yarn install -D --network-concurrency 1
       - ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
       - yarn test --coverage --ci
     caches:
       - node
       - jest
 
-#lint: &lint
-#  step:
-#    name: Lint package
-#    script:
-#      - yarn add eslint
-#      - npx eslint .
-#    caches:
-#      - node
+lint: &lint
+  step:
+    name: Lint
+    script:
+      - yarn install -D --network-concurrency 1
+      - yarn lint --quiet
+    caches:
+      - node
 
 securityScan: &securityScan
   step:
@@ -62,6 +64,7 @@ pipelines:
     - parallel:
         - <<: *test
         - <<: *coverage
+        - <<: *lint
 
   branches:
     master:
@@ -69,6 +72,7 @@ pipelines:
       - parallel:
           - <<: *test
           - <<: *coverage
+          - <<: *lint
           - <<: *securityScan
       - <<: *deploy
 
