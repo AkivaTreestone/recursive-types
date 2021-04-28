@@ -1,3 +1,3 @@
-# Boilerplate node package
-This is a template package with all the basic devops taken care of.
-Just rename the package in package.json. Start coding in src/.
+# Recursive Types
+A simple type only library to help solve types that are recursive (objects).
+

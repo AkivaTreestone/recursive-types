@@ -67,6 +67,7 @@
             "ts-nocheck": true,
             "ts-check": false,
             "minimumDescriptionLength": 3
-        }]
+        }],
+	  "@typescript-eslint/ban-types": 0
     }
 }
