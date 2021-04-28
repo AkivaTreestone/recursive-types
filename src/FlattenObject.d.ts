@@ -1,5 +1,23 @@
 import { RecursionLimit, AnyFunc } from "./CommonTypes";
 
+/**
+ * What does this do?
+ * It recursively goes through an object and creates a union of all the values.
+ *
+ * Your input type:
+ * {
+ *     a: "foo",
+ *     b: "bar",
+ *     sub: {
+ *         c: "baz"
+ *     }
+ * }
+ *
+ * The output type:
+ * "foo" | "bar" | "baz"
+ */
+export type FlattenObject<TSource> = __Level0<TSource, AnyFunc>;
+
 type __Level9<TSource, TObjectFilter> = TSource extends object
 	? TSource extends TObjectFilter
 		? TSource
@@ -50,5 +68,3 @@ type __Level0<TSource, TObjectFilter> = TSource extends object
 		? TSource
 		: __Level1<TSource[keyof TSource], TObjectFilter>
 	: TSource;
-
-export type FlattenObject<TSource> = __Level0<TSource, AnyFunc>;
