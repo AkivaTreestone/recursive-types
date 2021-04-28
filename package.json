@@ -19,7 +19,6 @@
   },
   "publishConfig": {
     "scope": "@treestone",
-    "access": "restricted",
     "omit": "dev"
   },
   "devDependencies": {
