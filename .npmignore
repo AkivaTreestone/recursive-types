@@ -121,12 +121,11 @@ __tests__
 __mocks__
 
 # source code - since its not needed
-src/
 bitbucket-pipelines.yml
-tsconfig.json
 babel.config.js
 jest.config.js
 .editorconfig
 .eslintignore
 .eslintrc.json
 .prettierrc
+dist/

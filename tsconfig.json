@@ -2,18 +2,17 @@
     "compilerOptions": {
         "sourceMap": true,
         "noImplicitAny": true,
-        "module": "commonjs",
+        "module": "None",
         "target": "ESNext",
         "moduleResolution": "Node",
-        "esModuleInterop": true,
+        "esModuleInterop": false,
         "lib": ["es6", "dom"],
         "allowJs": true,
         "noImplicitReturns": true,
         "noImplicitThis": true,
         "strictNullChecks": true,
-        "resolveJsonModule": true,
         "typeRoots": [
-            "./src/types/**/*",
+            "./src/**/*",
             "./node_modules/@types"
         ],
         "rootDirs": ["src"],

@@ -51,7 +51,4 @@ type __Level0<TSource, TObjectFilter> = TSource extends object
 		: __Level1<TSource[keyof TSource], TObjectFilter>
 	: TSource;
 
-export type FlattenObject<TSource, TFilter = unknown> = __Level0<
-	TSource,
-	AnyFunc | TFilter
->;
+export type FlattenObject<TSource> = __Level0<TSource, AnyFunc>;
