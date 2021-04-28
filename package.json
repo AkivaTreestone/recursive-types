@@ -1,10 +1,11 @@
 {
   "name": "@treestone/recursive-types",
   "description": "A module for helpful recursive types.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "index.js",
   "types": "src/index.d.ts",
   "license": "MIT",
+  "repository": "https://github.com/AkivaTreestone/recursive-types",
   "scripts": {
     "lint": "eslint './src/**/*.ts'"
   },

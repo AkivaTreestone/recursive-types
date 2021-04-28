@@ -124,6 +124,7 @@ __mocks__
 bitbucket-pipelines.yml
 babel.config.js
 jest.config.js
+tsconfig.json
 .editorconfig
 .eslintignore
 .eslintrc.json
